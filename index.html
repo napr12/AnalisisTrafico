@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -24,19 +24,27 @@
                     <option value="4">Filtrar por protocolo</option>
                 </select>
             </div>
-            <div class="col-md-3">
-                <label for="Tiempo" class="form-label">Tiempo</label>
+            <div class="col-md-1">
+                <label for="Tiempo" class="form-label">Tiempo(seg)</label>
                 <input type="number" class="form-control" id="Tiempo" value="10" required>
             </div>
             <div class="col-md-3">
-                <label for="Interface" class="form-label">Interface</label>
-                <select class="form-select" id="Interface"aria-label="Default select example">
+                <label for="Interfaz" class="form-label">Interface</label>
+                <select class="form-select" id="Interfaz"aria-label="Default select example">
                     <option selected>Seleccione una opción</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="fProtocolo" class="form-label">Filtro</label>
+                <select class="form-select" id="fProtocolo"aria-label="Default select example">
+                    <option selected>Protocolo</option>
+                    <option value="1">TCP</option>
+                    <option value="2">UDP</option>
                 </select>
             </div>
             <div class="col-md-3">
                 <br>
-                <button type="button" class="btn btn-primary">Buscar</button>
+                <button id="buscar" type="button" class="btn btn-primary">Buscar</button>
             </div>
         </div>
         <div class="row justify-content-md-center">
@@ -47,6 +55,9 @@
                     <th>IP DESTINO</th>   
                     <th>PESO(BYTES)</th>
                 </tr>
+                <tbody id="tbody">
+
+                </tbody>
             </table>
         </div>
     </div>
