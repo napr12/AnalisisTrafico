@@ -56,7 +56,9 @@ def post_origen():
         return origenSolicitados,200
 @app.route("/obtenerInterface")
 def get_interface():
-    interface=LogicaCaptura.obtenerInterface()
-    return jsonify(interface),200
+    interface=json.dumps([LogicaCaptura.obtenerInterface()])
+    response=jsonify(interface)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response,200
 if __name__ =='__main__':
     app.run(debug=True)

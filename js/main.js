@@ -15,9 +15,17 @@ class Captura{
 
 
 const interface = async()=>{
-    const obtenerInterfaz=await fetch('https://0628904f-b494-453a-8817-211833085ef0.mock.pstmn.io/obtenerInterface')
-    const listarInterfaz=await obtenerInterfaz.json()
-    listarInterface(listarInterfaz)
+    const obtenerInterfaz=await fetch('http://127.0.0.1:5000/obtenerInterface',{
+        method:'GET',
+        mode:"no-cors",
+        headers:{
+            "Content-Type":"application/json"
+        }}
+    )
+    console.log(obtenerInterfaz)
+    const listarInterfaz=await obtenerInterfaz.text()
+    console.log(listarInterfaz)
+    listarInterface(["Ethernet"])
 }
 const listarInterface = (listarInterfaz)=>{
     const select = document.getElementById('Interfaz')
@@ -55,9 +63,12 @@ const cargarTabla=(captura)=>{
 }
 
 const capturar=async ()=>{
-    interfaz=document.getElementById('Interfaz')
-    tiempo=document.getElementById('Tiempo')
-    const obtenerCaptura = await fetch(`https://e74561e0-cb82-4356-85fc-ef6449fafcd5.mock.pstmn.io/capturar?interface=${interfaz}&tiempo=${tiempo}`)
+    interfaz=document.getElementById('Interfaz').value
+    tiempo=document.getElementById('Tiempo').value
+    const obtenerCaptura = await fetch(`http://127.0.0.1:5000/capturar?interface=${interfaz}&tiempo=${tiempo}`,{
+        mode:"no-cors"
+}
+    )
     const listarCaptura = await obtenerCaptura.json()
     cargarTabla(listarCaptura._paquetes)
 }

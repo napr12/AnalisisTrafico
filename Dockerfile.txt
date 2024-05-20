@@ -1,0 +1,15 @@
+# Usa una imagen base de Python
+FROM python:3.8
+
+# Copia los archivos de tu aplicación al contenedor
+COPY app.py /app.py
+
+
+# Establece el directorio de trabajo
+WORKDIR /app
+
+# Instala las dependencias
+RUN pip install
+
+# Define el comando para ejecutar la aplicación
+CMD ["python", "app.py"]
